@@ -1,0 +1,31 @@
+{
+  "info": {
+    "name": "FuelSavings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Calculate Fuel Savings",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"distanceKm\": 20,\n  \"model\": \"physics\",\n  \"vehicleMassKg\": 1500,\n  \"accelEvents\": 8,\n  \"avgDeltaVmS\": 2.5,\n  \"engineEfficiency\": 0.25,\n  \"baseLPer100Km\": 6.8\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/v1/fuel/savings",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api","v1","fuel","savings"]
+        }
+      }
+    }
+  ]
+}
