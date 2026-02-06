@@ -1,4 +1,4 @@
-# FuelSavings API
+# FuelSavings-APM-DotNet
 
 Sample ASP.NET Core minimal API that calculates fuel differences between driving styles.
 
