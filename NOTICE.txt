@@ -1,0 +1,11 @@
+This repository is licensed under the Apache License 2.0.
+
+This work may be used, modified, and distributed for both private
+and commercial purposes in accordance with the terms of the Apache
+License 2.0 (see LICENSE file).
+
+The author provides this repository "as-is" and is not responsible
+for any direct or indirect consequences arising from its use.
+Users are responsible for verifying suitability for their purposes,
+including compliance with laws, regulations, and third-party service
+requirements (for example, Datadog API keys and account usage).
