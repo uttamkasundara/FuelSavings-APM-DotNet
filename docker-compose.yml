@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DD_AGENT_HOST=datadog
+      - DD_TRACE_AGENT_PORT=8126
+      - DD_ENV=local
+      - DD_SERVICE=fuelsavings-api
+      - DD_TRACE_DEBUG=true
+
+  datadog:
+    image: datadog/agent:latest
+    container_name: datadog
+    environment:
+      # Provide your Datadog API key via environment or .env file
+      - DD_API_KEY=${DD_API_KEY}
+      - DD_SITE=datadoghq.com
+      - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true
+      - DD_APM_ENABLED=true
+      - DD_APM_NON_LOCAL_TRAFFIC=true
+      - DD_HOSTNAME=fuelsavings-local
+      - DD_ENV=local
+      - DD_SERVICE=fuelsavings-agent
+      - DD_APPSEC_ENABLED=true
+    ports:
+      - "8126:8126" # trace agent
+    # Use only the standard read-only mounts (avoid mounting /opt to preserve agent binaries)
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
+    restart: unless-stopped
